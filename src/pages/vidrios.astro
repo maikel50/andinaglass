@@ -1,0 +1,101 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const categorias = [
+  {
+    nombre: "Flotado Claro",
+    imagen: "/vidrio-claro.jpg",
+    variantes: [
+      "Claro 3mm — 244x183",
+      "Claro 4mm — 214x330",
+      "Claro 6mm — 214x330",
+    ],
+  },
+  {
+    nombre: "Flotado Color",
+    imagen: "/vidrio-color.jpg",
+    variantes: [
+      "Dark Grey 4mm — 214x330 / 214x366",
+      "Dark Grey 6mm — 214x330 / 214x366",
+      "Bronce Normal 4mm / 6mm — 214x330",
+      "Verde Automotriz 6mm — 214x330",
+      "Gris 4mm / 6mm — 214x330",
+      "Negro Indonés 6mm — 214x330",
+    ],
+  },
+  {
+    nombre: "Reflectivo",
+    imagen: "/vidrio-reflectivo.jpg",
+    variantes: [
+      "Blue Reflectivo 4mm / 6mm — 214x330",
+      "Bronce Reflectivo 4mm / 6mm — 214x330",
+      "Verde Botella Reflectivo 4mm / 6mm — 214x330",
+    ],
+  },
+  {
+    nombre: "Esmerilado (Alaciado)",
+    imagen: "/vidrio-esmerilado.jpg",
+    variantes: ["Alaciado 4mm — 214x330", "Alaciado 6mm — 214x330"],
+  },
+  {
+    nombre: "Catedral",
+    imagen: "/vidrio-catedral.jpg",
+    variantes: [
+      "Putzel Claro 4mm — 244x183",
+      "Putzel Bronce 4mm — 244x183",
+      "Acanalado 5mm — 214x250",
+      "Cebra 4mm — 244x183",
+    ],
+  },
+  {
+    nombre: "Espejo",
+    imagen: "/vidrio-espejo.jpg",
+    variantes: [
+      "Espejo 2mm — 160x220",
+      "Espejo 3mm — 244x183",
+      "Espejo 6mm — 214x330",
+    ],
+  },
+  {
+    nombre: "Laminado",
+    imagen: "/vidrio-laminado.jpg",
+    variantes: ["Claro 3+3mm — 214x330", "Claro 3+3mm — 214x366"],
+  },
+];
+---
+
+<Layout>
+  <section class="bg-neutral-50 py-10 text-center">
+    <h1 class="text-3xl font-bold text-neutral-900">Vidrios</h1>
+    <p class="text-neutral-600 mt-2 max-w-xl mx-auto">
+      Distribuimos vidrio en distintos acabados, espesores y medidas. Consulta
+      disponibilidad y precios por WhatsApp o el formulario de contacto.
+    </p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        categorias.map((cat) => (
+          <div class="border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
+            <div class="h-40 bg-neutral-100">
+              <img
+                src={cat.imagen}
+                alt={cat.nombre}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-neutral-900 mb-2">{cat.nombre}</h3>
+              <ul class="text-sm text-neutral-600 space-y-1">
+                {cat.variantes.map((v) => (
+                  <li>• {v}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,107 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const acabados = ["Negro", "Blanco", "Natural", "Maderado"];
+
+const sistemas = [
+  {
+    nombre: "Ventana de 4-5 perfiles (corrediza)",
+    imagen: "/aluminio-corrediza.jpg",
+    piezas: [
+      "Base",
+      "Cabezal",
+      "Jambas",
+      "Peinazo",
+      "Parante económico",
+      "Parante reforzado",
+    ],
+  },
+  {
+    nombre: "Ventana Fija",
+    imagen: "/aluminio-fija.jpg",
+    piezas: ["Fija con vena", "Fija sin vena", "Bordo de la fija", "Millón"],
+  },
+  {
+    nombre: "Ventana Proyectable",
+    imagen: "/aluminio-proyectable.jpg",
+    piezas: [
+      "Hoja",
+      "Marco",
+      "T proyectable",
+      "Bordo redondo",
+      "Ancla proyectable",
+    ],
+  },
+  {
+    nombre: "Puerta Batiente",
+    imagen: "/aluminio-batiente.jpg",
+    piezas: ["Marco abierto", "Marco cerrado"],
+  },
+  {
+    nombre: "Tubos estructurales",
+    imagen: "/aluminio-tubos.jpg",
+    piezas: [
+      "Tubo 1½ x 1½",
+      "Tubo chapero",
+      "Tubo 2 x ½",
+      "Tubo 1¼ x ¼",
+      "Tubo 1 x 1",
+    ],
+  },
+  {
+    nombre: "Ángulos",
+    imagen: "/aluminio-angulos.jpg",
+    piezas: ["Ángulo ½ x ½", "Ángulo 1 x ½", "Ángulo 1 x 1"],
+  },
+  {
+    nombre: "Junquillos",
+    imagen: "/aluminio-junquillos.jpg",
+    piezas: ["Junquillo redondo fijo", "Junquillo redondo móvil"],
+  },
+];
+---
+
+<Layout>
+  <section class="bg-neutral-50 py-10 text-center">
+    <h1 class="text-3xl font-bold text-neutral-900">Aluminio</h1>
+    <p class="text-neutral-600 mt-2 max-w-xl mx-auto">
+      Perfilería de aluminio para ventanas, puertas y estructuras. Disponible en
+      4 acabados:
+    </p>
+    <div class="flex justify-center gap-3 mt-4 flex-wrap">
+      {
+        acabados.map((a) => (
+          <span class="bg-white border border-neutral-300 text-neutral-700 text-sm px-4 py-1.5 rounded-full">
+            {a}
+          </span>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        sistemas.map((sis) => (
+          <div class="border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
+            <div class="h-40 bg-neutral-100">
+              <img
+                src={sis.imagen}
+                alt={sis.nombre}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-neutral-900 mb-2">{sis.nombre}</h3>
+              <ul class="text-sm text-neutral-600 space-y-1">
+                {sis.piezas.map((p) => (
+                  <li>• {p}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

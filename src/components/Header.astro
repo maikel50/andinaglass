@@ -2,7 +2,7 @@
 const navLinks = [
   { href: "/", label: "Inicio" },
   { href: "/vidrios", label: "Vidrios" },
-  { href: "/alumnio", label: "Alumnio" },
+  { href: "/aluminio", label: "Aluminio" },
   { href: "/accesorios", label: "Accesorios" },
   { href: "/contacto", label: "contacto" },
 ];
@@ -16,10 +16,17 @@ const navLinks = [
 Logo + navegacion
 --- -->
     <div class="bg-white shadow-sm px-4 py-3 flex justify-between items-center">
-      <a href="/" class="text-x1 font-bold text-neutral-900">
+      <a href="/" class="text-xl font-bold text-neutral-900">
         Andina <span class="text-blue-600">Glass</span>
       </a>
     </div>
+    <button
+      id="menu-toggle"
+      class="md:hidden text-neutral-900 text-2xl bg-white"
+      aria-label="Abrir menú"
+    >
+      ☰
+    </button>
 
     <div class="flex flex-wrap gap-4">
       <a
@@ -45,7 +52,7 @@ Logo + navegacion
     </div>
     <!-----
     Menu desktop
---- -->
+
     <nav class="hidden md:flex gap-6">
       {
         navLinks.map((link) => (
@@ -58,6 +65,7 @@ Logo + navegacion
         ))
       }
     </nav>
+    --- -->
     <!--Menu movil desplegable -->
     <nav
       id="mobile-menu"

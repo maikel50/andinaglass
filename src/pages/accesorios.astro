@@ -1,0 +1,135 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const categorias = [
+  {
+    nombre: "Silicones y selladores",
+    imagen: "/accesorios-silicon.jpg",
+    productos: [
+      "Silicón Abro",
+      "Silicón inox E1200",
+      "Silicón inox G1200",
+      "Pistolas de silicón",
+    ],
+  },
+  {
+    nombre: "Chapas y cerraduras",
+    imagen: "/accesorios-chapas.jpg",
+    productos: [
+      "Chapa pomo para baño",
+      "Chapa de pomo para dormitorio",
+      "Chapa pico de loro",
+      "Seguros de botón",
+      "Seguros europeos",
+      "Seguros de manija",
+      "Seguros de caracol",
+    ],
+  },
+  {
+    nombre: "Accesorios para vidrio templado",
+    imagen: "/accesorios-vidrio-templado.jpg",
+    productos: [
+      "Pibot",
+      "Puntos fijos para vidrio templado",
+      "Bisagras para vidrio templado",
+      "Chapetas",
+      "Jaladeras tubulares",
+    ],
+  },
+  {
+    nombre: "Tornillería y fijación",
+    imagen: "/accesorios-tornilleria.jpg",
+    productos: [
+      "Tornillos 7×2",
+      "Tornillos 8×1/2",
+      "Tornillos 8×2",
+      "Tornillos 8×2 1/2",
+      "Remaches",
+      "Anclas dado",
+    ],
+    detalle: "Tornillos disponibles en negro y galvanizado",
+  },
+  {
+    nombre: "Accesorios para ventanas",
+    imagen: "/accesorios-ventanas.jpg",
+    productos: [
+      'Brazos de proyectable de 8"',
+      'Brazos de proyectable de 10"',
+      'Brazos de proyectable de 12"',
+      "Bisagras Omega",
+      "Brazos cierra puerta Felfa para ventanas",
+      "Ruedas simples",
+      "Ruedas dobles",
+    ],
+  },
+  {
+    nombre: "Perfiles y complementos",
+    imagen: "/accesorios-vinil.jpg",
+    productos: ["Vinil en varias numeraciones"],
+  },
+  {
+    nombre: "Herramientas",
+    imagen: "/accesorios-herramientas.jpg",
+    productos: ["Brocas", "Pistolas de silicón"],
+  },
+  {
+    nombre: "Baño",
+    imagen: "/accesorios-bano.jpg",
+    productos: ["Toalleros"],
+  },
+  {
+    nombre: "Instalación y protección",
+    imagen: "/accesorios-instalacion.jpg",
+    productos: [
+      "Cintas doble faz para piel de vidrio",
+      "Maskin",
+      "Guantes para manipular vidrio",
+    ],
+  },
+];
+---
+
+<Layout>
+  <section class="bg-neutral-50 py-10 text-center">
+    <h1 class="text-3xl font-bold text-neutral-900">Accesorios</h1>
+
+    <p class="text-neutral-600 mt-2 max-w-xl mx-auto">
+      Accesorios, herrajes, herramientas y complementos para trabajos en vidrio,
+      aluminio, ventanas y puertas.
+    </p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        categorias.map((cat) => (
+          <div class="border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
+            <div class="h-40 bg-neutral-100">
+              <img
+                src={cat.imagen}
+                alt={cat.nombre}
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <div class="p-4">
+              <h3 class="font-semibold text-neutral-900 mb-2">{cat.nombre}</h3>
+
+              <ul class="text-sm text-neutral-600 space-y-1">
+                {cat.productos.map((producto) => (
+                  <li>• {producto}</li>
+                ))}
+              </ul>
+
+              {cat.detalle && (
+                <p class="text-xs text-neutral-500 mt-3 border-t border-neutral-100 pt-3">
+                  {cat.detalle}
+                </p>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
