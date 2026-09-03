@@ -1,0 +1,85 @@
+---
+const navLinks = [
+  { href: "/", label: "Inicio" },
+  { href: "/vidrios", label: "Vidrios" },
+  { href: "/alumnio", label: "Alumnio" },
+  { href: "/accesorios", label: "Accesorios" },
+  { href: "/contacto", label: "contacto" },
+];
+---
+
+<header>
+  <div
+    class="bg-neutral-900 text-neutral-100 text-xs sm:text-sm px-4 py-2 flex flex-wrap justify-between items-center gap-2"
+  >
+    <!-----
+Logo + navegacion
+--- -->
+    <div class="bg-white shadow-sm px-4 py-3 flex justify-between items-center">
+      <a href="/" class="text-x1 font-bold text-neutral-900">
+        Andina <span class="text-blue-600">Glass</span>
+      </a>
+    </div>
+
+    <div class="flex flex-wrap gap-4">
+      <a
+        href="tel:+5930997564672"
+        class="flex items-center gap-1 hover:underline"
+        >+593 099 756 4672
+      </a>
+      <a
+        href="mailto:info@andinaglass.com"
+        class="flex items-center gap-1 hover:underline"
+      >
+        info@andinaglass.com
+      </a>
+      <span class="hidden sm:flex items-center gap-1">
+        Latacunga, Ecuador
+      </span>
+    </div>
+
+    <div class="flex gap-3">
+      <a href="#" target="_blank" class="hover:underline">Facebook</a>
+      <a href="#" target="_blank" class="hover:underline">Instagram</a>
+      <a href="#" target="_blank" class="hover:underline">WhatsApp</a>
+    </div>
+    <!-----
+    Menu desktop
+--- -->
+    <nav class="hidden md:flex gap-6">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-neutral-900 hover:text-blue-600 transition-colors"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <!--Menu movil desplegable -->
+    <nav
+      id="mobile-menu"
+      class="hidden md:hidden bg-white border-t px-4 py-3 flex flex-col gap-3"
+    >
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-neutral-700 font-medium hover:text-blue-600"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+  });
+</script>
