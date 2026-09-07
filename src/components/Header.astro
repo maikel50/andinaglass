@@ -4,90 +4,105 @@ const navLinks = [
   { href: "/vidrios", label: "Vidrios" },
   { href: "/aluminio", label: "Aluminio" },
   { href: "/accesorios", label: "Accesorios" },
-  { href: "/contacto", label: "contacto" },
+  { href: "/contacto", label: "Contacto" },
 ];
 ---
 
-<header>
-  <div
-    class="bg-neutral-900 text-neutral-100 text-xs sm:text-sm px-4 py-2 flex flex-wrap justify-between items-center gap-2"
-  >
-    <!-----
-Logo + navegacion
---- -->
-    <div class="bg-white shadow-sm px-4 py-3 flex justify-between items-center">
-      <a href="/" class="text-xl font-bold text-neutral-900">
-        Andina <span class="text-blue-600">Glass</span>
-      </a>
-    </div>
-    <button
-      id="menu-toggle"
-      class="md:hidden text-neutral-900 text-2xl bg-white"
-      aria-label="Abrir menú"
+<header class="w-full">
+  <!-- Barra superior -->
+  <div class="bg-neutral-900 text-neutral-300 text-xs sm:text-sm">
+    <div
+      class="max-w-6xl mx-auto px-4 py-2 flex flex-wrap justify-between items-center gap-x-6 gap-y-1"
     >
-      ☰
-    </button>
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-1">
+        <a href="tel:+5930997564672" class="hover:text-white transition-colors">
+          +593 099 756 4672
+        </a>
 
-    <div class="flex flex-wrap gap-4">
+        <a
+          href="mailto:andinaglassdistribuidora@gmail.com"
+          class="hidden sm:block hover:text-white transition-colors"
+        >
+          andinaglassdistribuidora@gmail.com
+        </a>
+      </div>
+
+      <span> Latacunga, Ecuador </span>
+    </div>
+  </div>
+
+  <!-- Navegación principal -->
+  <div class="bg-white border-b border-neutral-200">
+    <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
+      <!-- Logo -->
       <a
-        href="tel:+5930997564672"
-        class="flex items-center gap-1 hover:underline"
-        >+593 099 756 4672
-      </a>
-      <a
-        href="mailto:info@andinaglass.com"
-        class="flex items-center gap-1 hover:underline"
+        href="/"
+        class="flex items-center shrink-0"
+        aria-label="Andina Glass - Inicio"
       >
-        info@andinaglass.com
+        <img
+          src="/Logo_AndinaGlass.webp"
+          alt="Andina Glass"
+          class="h-21 w-auto"
+        />
       </a>
-      <span class="hidden sm:flex items-center gap-1">
-        Latacunga, Ecuador
-      </span>
+
+      <!-- Menú escritorio -->
+      <nav class="hidden md:flex items-center gap-8">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-sm font-medium text-neutral-700 hover:text-blue-600 transition-colors"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <!-- Botón móvil -->
+      <button
+        id="menu-toggle"
+        type="button"
+        class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-neutral-700 hover:bg-neutral-100 transition-colors"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+      >
+        <span class="text-2xl leading-none">☰</span>
+      </button>
     </div>
 
-    <div class="flex gap-3">
-      <a href="#" target="_blank" class="hover:underline">Facebook</a>
-      <a href="#" target="_blank" class="hover:underline">Instagram</a>
-      <a href="#" target="_blank" class="hover:underline">WhatsApp</a>
-    </div>
-    <!-----
-    Menu desktop
-
-    <nav class="hidden md:flex gap-6">
-      {
-        navLinks.map((link) => (
-          <a
-            href={link.href}
-            class="text-neutral-900 hover:text-blue-600 transition-colors"
-          >
-            {link.label}
-          </a>
-        ))
-      }
-    </nav>
-    --- -->
-    <!--Menu movil desplegable -->
+    <!-- Menú móvil -->
     <nav
       id="mobile-menu"
-      class="hidden md:hidden bg-white border-t px-4 py-3 flex flex-col gap-3"
+      class="hidden md:hidden border-t border-neutral-200 bg-white"
     >
-      {
-        navLinks.map((link) => (
-          <a
-            href={link.href}
-            class="text-neutral-700 font-medium hover:text-blue-600"
-          >
-            {link.label}
-          </a>
-        ))
-      }
+      <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="py-3 text-neutral-700 font-medium border-b border-neutral-100 last:border-0 hover:text-blue-600 transition-colors"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
     </nav>
   </div>
 </header>
+
 <script>
   const toggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("mobile-menu");
+
   toggle?.addEventListener("click", () => {
     menu?.classList.toggle("hidden");
+
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+
+    toggle.setAttribute("aria-expanded", String(!expanded));
   });
 </script>
