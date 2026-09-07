@@ -6,6 +6,11 @@ const footerLinks = [
   { href: "/catalogo", label: "Catálogo" },
   { href: "/contacto", label: "Contacto" },
 ];
+
+const legalLinks = [
+  { href: "/politica", label: "Política de privacidad" },
+  { href: "/terminos", label: "Términos y condiciones" },
+];
 ---
 
 <footer class="bg-neutral-900 text-neutral-300">
@@ -13,14 +18,43 @@ const footerLinks = [
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
       <!-- Empresa -->
       <div>
-        <a href="/" class="text-2xl font-bold text-white">
-          Andina <span class="text-blue-600">Glass</span>
+        <a
+          href="/"
+          class="inline-flex items-center bg-white rounded-lg px-3 py-2"
+          aria-label="Andina Glass - Inicio"
+        >
+          <img
+            src="/Logo_AndinaGlass.webp"
+            alt="Andina Glass"
+            class="h-14 w-auto"
+          />
         </a>
 
         <p class="mt-4 text-sm leading-6 text-neutral-400 max-w-sm">
           Distribución de vidrios, aluminio y accesorios para proyectos de
           construcción, decoración y diseño.
         </p>
+
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Melchor+de+Benavides+y+Benjam%C3%ADn+Ter%C3%A1n%2C+Latacunga%2C+Ecuador"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-start gap-2 text-neutral-400 hover:text-blue-500 transition-colors"
+        >
+          <span class="text-base">📍</span>
+
+          <span>
+            <span
+              class="block text-neutral-300 font-medium group-hover:text-blue-500"
+            >
+              Dirección
+            </span>
+            <span class="block mt-0.5">
+              Melchor de Benavides y Benjamín Terán
+            </span>
+            <span class="block"> Latacunga</span>
+          </span>
+        </a>
       </div>
 
       <!-- Navegación -->
@@ -63,26 +97,36 @@ const footerLinks = [
 
           <li>
             <a
-              href="mailto:info@andinaglass.com"
-              class="hover:text-blue-500 transition-colors"
+              href="mailto:andinaglassdistribuidora@gmail.com"
+              class="hover:text-blue-500 transition-colors break-all"
             >
-              info@andinaglass.com
+              andinaglassdistribuidora@gmail.com
             </a>
           </li>
-
-          <li class="text-neutral-400">Latacunga, Ecuador</li>
         </ul>
 
         <div class="flex gap-4 mt-5 text-sm">
-          <a href="#" class="hover:text-blue-500 transition-colors">
+          <a
+            href="#"
+            aria-label="Facebook"
+            class="hover:text-blue-500 transition-colors"
+          >
             Facebook
           </a>
 
-          <a href="#" class="hover:text-blue-500 transition-colors">
+          <a
+            href="#"
+            aria-label="Instagram"
+            class="hover:text-blue-500 transition-colors"
+          >
             Instagram
           </a>
 
-          <a href="#" class="hover:text-blue-500 transition-colors">
+          <a
+            href="#"
+            aria-label="WhatsApp"
+            class="hover:text-blue-500 transition-colors"
+          >
             WhatsApp
           </a>
         </div>
@@ -92,15 +136,30 @@ const footerLinks = [
     <!-- Separador -->
     <div class="border-t border-neutral-800 mt-10 pt-6">
       <div
-        class="flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-neutral-500"
+        class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral-500"
       >
-        <p>
+        <p class="text-center sm:text-left">
           © {new Date().getFullYear()} Andina Glass. Todos los derechos reservados.
         </p>
 
-        <p>Vidrios · Aluminio · Accesorios</p>
+        <!-- Información legal -->
+        <div class="flex flex-wrap justify-center gap-x-4 gap-y-2">
+          {
+            legalLinks.map((link) => (
+              <a
+                href={link.href}
+                class="hover:text-neutral-300 transition-colors"
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
       </div>
+
+      <p class="text-center mt-4 text-xs text-neutral-600">
+        Vidrios · Aluminio · Accesorios
+      </p>
     </div>
   </div>
 </footer>
-```
