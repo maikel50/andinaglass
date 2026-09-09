@@ -4,17 +4,16 @@ import Layout from "../layouts/Layout.astro";
 const categorias = [
   {
     nombre: "Silicones y selladores",
-    imagen: "/accesorios-silicon.jpg",
+    imagen: "/img_siliconas.webp",
     productos: [
       "Silicón Abro",
       "Silicón inox E1200",
       "Silicón inox G1200",
-      "Pistolas de silicón",
     ],
   },
   {
     nombre: "Chapas y cerraduras",
-    imagen: "/accesorios-chapas.jpg",
+    imagen: "/img_chapas_cerraduras.webp",
     productos: [
       "Chapa pomo para baño",
       "Chapa de pomo para dormitorio",
@@ -27,7 +26,7 @@ const categorias = [
   },
   {
     nombre: "Accesorios para vidrio templado",
-    imagen: "/accesorios-vidrio-templado.jpg",
+    imagen: "/img_accesorios_vidrio_templado.webp",
     productos: [
       "Pibot",
       "Puntos fijos para vidrio templado",
@@ -38,7 +37,7 @@ const categorias = [
   },
   {
     nombre: "Tornillería y fijación",
-    imagen: "/accesorios-tornilleria.jpg",
+    imagen: "/img_tornilleria_fijacion.webp",
     productos: [
       "Tornillos 7×2",
       "Tornillos 8×1/2",
@@ -51,7 +50,7 @@ const categorias = [
   },
   {
     nombre: "Accesorios para ventanas",
-    imagen: "/accesorios-ventanas.jpg",
+    imagen: "/img_accesorios_ventana.webp",
     productos: [
       'Brazos de proyectable de 8"',
       'Brazos de proyectable de 10"',
@@ -63,23 +62,30 @@ const categorias = [
     ],
   },
   {
-    nombre: "Perfiles y complementos",
-    imagen: "/accesorios-vinil.jpg",
-    productos: ["Vinil en varias numeraciones"],
+    nombre: "Viniles y complementos",
+    imagen: "/img_viniles_complementos.webp",
+    productos: [
+      "Vinil en varias numeraciones",
+    ],
   },
   {
     nombre: "Herramientas",
-    imagen: "/accesorios-herramientas.jpg",
-    productos: ["Brocas", "Pistolas de silicón"],
+    imagen: "/img_herramientas.webp",
+    productos: [
+      "Brocas",
+      "Pistolas de silicón",
+    ],
   },
   {
-    nombre: "Baño",
-    imagen: "/accesorios-bano.jpg",
-    productos: ["Toalleros"],
+    nombre: "Accesorios para baño",
+    imagen: "/img_accesorios_baño.webp",
+    productos: [
+      "Toalleros",
+    ],
   },
   {
     nombre: "Instalación y protección",
-    imagen: "/accesorios-instalacion.jpg",
+    imagen: "/img_instalacion_proteccion.webp",
     productos: [
       "Cintas doble faz para piel de vidrio",
       "Maskin",
@@ -90,46 +96,204 @@ const categorias = [
 ---
 
 <Layout>
-  <section class="bg-neutral-50 py-10 text-center">
-    <h1 class="text-3xl font-bold text-neutral-900">Accesorios</h1>
 
-    <p class="text-neutral-600 mt-2 max-w-xl mx-auto">
-      Accesorios, herrajes, herramientas y complementos para trabajos en vidrio,
-      aluminio, ventanas y puertas.
-    </p>
+  <!-- Encabezado -->
+  <section class="bg-neutral-50 border-b border-neutral-200">
+    <div class="max-w-6xl mx-auto px-4 py-10 sm:py-12">
+
+      <!-- Breadcrumb -->
+      <div class="text-sm text-neutral-500 mb-6">
+        <a
+          href="/"
+          class="hover:text-blue-600 transition-colors"
+        >
+          Inicio
+        </a>
+
+        <span class="mx-2 text-neutral-400">/</span>
+
+        <span class="text-neutral-700">
+          Accesorios
+        </span>
+      </div>
+
+      <div class="max-w-2xl">
+
+        <p class="text-sm font-semibold uppercase tracking-wider text-blue-600 mb-2">
+          Catálogo
+        </p>
+
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900">
+          Accesorios
+        </h1>
+
+        <p class="mt-3 text-base sm:text-lg leading-7 text-neutral-600">
+          Herrajes, herramientas y complementos para instalación,
+          fabricación y mantenimiento de trabajos en vidrio y aluminio.
+        </p>
+
+      </div>
+
+    </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-4 py-12">
+
+  <!-- Categorías -->
+  <section class="max-w-6xl mx-auto px-4 py-12 sm:py-14">
+
+    <div class="flex items-end justify-between gap-4 mb-8">
+
+      <div>
+        <h2 class="text-xl sm:text-2xl font-semibold text-neutral-900">
+          Categorías de accesorios
+        </h2>
+
+        <p class="mt-1 text-sm text-neutral-500">
+          Encuentra herrajes, fijaciones, herramientas y complementos.
+        </p>
+      </div>
+
+      <span class="hidden sm:block text-sm text-neutral-500">
+        {categorias.length} categorías
+      </span>
+
+    </div>
+
+
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
       {
         categorias.map((cat) => (
-          <div class="border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
-            <div class="h-40 bg-neutral-100">
+          <article
+            class="group flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+          >
+
+            <!-- Imagen -->
+            <div class="aspect-[4/3] overflow-hidden bg-neutral-100">
+
               <img
                 src={cat.imagen}
                 alt={cat.nombre}
-                class="w-full h-full object-cover"
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
+
             </div>
 
-            <div class="p-4">
-              <h3 class="font-semibold text-neutral-900 mb-2">{cat.nombre}</h3>
 
-              <ul class="text-sm text-neutral-600 space-y-1">
-                {cat.productos.map((producto) => (
-                  <li>• {producto}</li>
-                ))}
-              </ul>
+            <!-- Contenido -->
+            <div class="flex flex-col flex-1 p-5">
 
-              {cat.detalle && (
-                <p class="text-xs text-neutral-500 mt-3 border-t border-neutral-100 pt-3">
-                  {cat.detalle}
+              <h3 class="text-lg font-semibold leading-6 text-neutral-900">
+                {cat.nombre}
+              </h3>
+
+
+              <!-- Productos -->
+              <div class="mt-4 border-t border-neutral-100 pt-4">
+
+                <p class="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-3">
+                  Productos
                 </p>
-              )}
+
+                <ul class="space-y-2">
+
+                  {
+                    cat.productos.map((producto) => (
+                      <li class="flex items-start gap-2 text-sm text-neutral-600">
+
+                        <span
+                          class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500"
+                        >
+                        </span>
+
+                        <span class="leading-5">
+                          {producto}
+                        </span>
+
+                      </li>
+                    ))
+                  }
+
+                </ul>
+
+              </div>
+
+
+              <!-- Información adicional -->
+              {
+                cat.detalle && (
+                  <div class="mt-4 rounded-lg bg-blue-50 px-3 py-2.5">
+                    <p class="text-xs leading-5 text-blue-700">
+                      {cat.detalle}
+                    </p>
+                  </div>
+                )
+              }
+
+
+              <!-- CTA -->
+              <div class="mt-auto pt-5">
+
+                <a
+                  href="https://wa.me/593997564672"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center w-full rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-600 transition-colors"
+                >
+                  Consultar disponibilidad
+                  <span class="ml-2">→</span>
+                </a>
+
+              </div>
+
             </div>
-          </div>
+
+          </article>
         ))
       }
+
     </div>
+
   </section>
+
+
+  <!-- CTA final -->
+  <section class="border-t border-neutral-200 bg-neutral-50">
+
+    <div class="max-w-6xl mx-auto px-4 py-12 text-center">
+
+      <h2 class="text-2xl font-semibold text-neutral-900">
+        ¿Buscas algún accesorio específico?
+      </h2>
+
+      <p class="mt-2 text-neutral-600 max-w-xl mx-auto">
+        Escríbenos y consulta disponibilidad de herrajes, herramientas,
+        fijaciones y complementos.
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-3 mt-6">
+
+        <a
+          href="https://wa.me/593997564672"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"
+        >
+          Consultar por WhatsApp
+        </a>
+
+        <a
+          href="/contacto"
+          class="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors"
+        >
+          Ir a contacto
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
 </Layout>

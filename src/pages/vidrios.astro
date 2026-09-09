@@ -4,7 +4,8 @@ import Layout from "../layouts/Layout.astro";
 const categorias = [
   {
     nombre: "Flotado Claro",
-    imagen: "/vidrio-claro.jpg",
+    imagen: "/FlotadoClaro.webp",
+    descripcion: "Vidrio transparente para diferentes aplicaciones.",
     variantes: [
       "Claro 3mm — 244x183",
       "Claro 4mm — 214x330",
@@ -13,7 +14,8 @@ const categorias = [
   },
   {
     nombre: "Flotado Color",
-    imagen: "/vidrio-color.jpg",
+    imagen: "/FlotadoColor.webp",
+    descripcion: "Vidrios tintados disponibles en diferentes tonalidades.",
     variantes: [
       "Dark Grey 4mm — 214x330 / 214x366",
       "Dark Grey 6mm — 214x330 / 214x366",
@@ -25,7 +27,8 @@ const categorias = [
   },
   {
     nombre: "Reflectivo",
-    imagen: "/vidrio-reflectivo.jpg",
+    imagen: "/Reflectivo.webp",
+    descripcion: "Vidrios con acabado reflectivo para proyectos arquitectónicos.",
     variantes: [
       "Blue Reflectivo 4mm / 6mm — 214x330",
       "Bronce Reflectivo 4mm / 6mm — 214x330",
@@ -34,12 +37,17 @@ const categorias = [
   },
   {
     nombre: "Esmerilado (Alaciado)",
-    imagen: "/vidrio-esmerilado.jpg",
-    variantes: ["Alaciado 4mm — 214x330", "Alaciado 6mm — 214x330"],
+    imagen: "/Esmerilado.webp",
+    descripcion: "Acabado translúcido para mayor privacidad y diseño.",
+    variantes: [
+      "Alaciado 4mm — 214x330",
+      "Alaciado 6mm — 214x330",
+    ],
   },
   {
     nombre: "Catedral",
-    imagen: "/vidrio-catedral.jpg",
+    imagen: "/catedral.webp",
+    descripcion: "Vidrios decorativos con diferentes texturas y acabados.",
     variantes: [
       "Putzel Claro 4mm — 244x183",
       "Putzel Bronce 4mm — 244x183",
@@ -49,7 +57,8 @@ const categorias = [
   },
   {
     nombre: "Espejo",
-    imagen: "/vidrio-espejo.jpg",
+    imagen: "/Espejo.webp",
+    descripcion: "Espejos disponibles en diferentes espesores y medidas.",
     variantes: [
       "Espejo 2mm — 160x220",
       "Espejo 3mm — 244x183",
@@ -58,44 +67,190 @@ const categorias = [
   },
   {
     nombre: "Laminado",
-    imagen: "/vidrio-laminado.jpg",
-    variantes: ["Claro 3+3mm — 214x330", "Claro 3+3mm — 214x366"],
+    imagen: "/laminado.webp",
+    descripcion: "Vidrio laminado para proyectos que requieren mayor protección.",
+    variantes: [
+      "Claro 3+3mm — 214x330",
+      "Claro 3+3mm — 214x366",
+    ],
   },
 ];
 ---
 
 <Layout>
-  <section class="bg-neutral-50 py-10 text-center">
-    <h1 class="text-3xl font-bold text-neutral-900">Vidrios</h1>
-    <p class="text-neutral-600 mt-2 max-w-xl mx-auto">
-      Distribuimos vidrio en distintos acabados, espesores y medidas. Consulta
-      disponibilidad y precios por WhatsApp o el formulario de contacto.
-    </p>
+
+  <!-- Encabezado -->
+  <section class="bg-neutral-50 border-b border-neutral-200">
+    <div class="max-w-6xl mx-auto px-4 py-10 sm:py-12">
+
+      <!-- Breadcrumb -->
+      <div class="text-sm text-neutral-500 mb-6">
+        <a href="/" class="hover:text-blue-600 transition-colors">
+          Inicio
+        </a>
+
+        <span class="mx-2 text-neutral-400">/</span>
+
+        <span class="text-neutral-700">
+          Vidrios
+        </span>
+      </div>
+
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold uppercase tracking-wider text-blue-600 mb-2">
+          Catálogo
+        </p>
+
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900">
+          Vidrios
+        </h1>
+
+        <p class="mt-3 text-base sm:text-lg leading-7 text-neutral-600">
+          Diferentes tipos de vidrio, acabados, espesores y medidas para
+          proyectos de construcción, arquitectura y diseño.
+        </p>
+      </div>
+
+    </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-4 py-12">
+
+  <!-- Catálogo -->
+  <section class="max-w-6xl mx-auto px-4 py-12 sm:py-14">
+
+    <div class="flex items-end justify-between gap-4 mb-8">
+      <div>
+        <h2 class="text-xl sm:text-2xl font-semibold text-neutral-900">
+          Tipos de vidrio
+        </h2>
+
+        <p class="mt-1 text-sm text-neutral-500">
+          Consulta disponibilidad y precios de cada producto.
+        </p>
+      </div>
+
+      <span class="hidden sm:block text-sm text-neutral-500">
+        {categorias.length} categorías
+      </span>
+    </div>
+
+
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
       {
         categorias.map((cat) => (
-          <div class="border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
-            <div class="h-40 bg-neutral-100">
+          <article
+            class="group overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+          >
+
+            <!-- Imagen -->
+            <div class="aspect-[4/3] overflow-hidden bg-neutral-100">
               <img
                 src={cat.imagen}
                 alt={cat.nombre}
-                class="w-full h-full object-cover"
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-neutral-900 mb-2">{cat.nombre}</h3>
-              <ul class="text-sm text-neutral-600 space-y-1">
-                {cat.variantes.map((v) => (
-                  <li>• {v}</li>
-                ))}
-              </ul>
+
+
+            <!-- Contenido -->
+            <div class="p-5">
+
+              <h3 class="text-lg font-semibold text-neutral-900">
+                {cat.nombre}
+              </h3>
+
+              <p class="mt-1.5 text-sm leading-5 text-neutral-500">
+                {cat.descripcion}
+              </p>
+
+
+              <!-- Variantes -->
+              <div class="mt-5 border-t border-neutral-100 pt-4">
+
+                <p class="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-3">
+                  Disponible
+                </p>
+
+                <ul class="space-y-2">
+
+                  {
+                    cat.variantes.map((v) => (
+                      <li class="flex items-start gap-2 text-sm text-neutral-600">
+
+                        <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500"></span>
+
+                        <span class="leading-5">
+                          {v}
+                        </span>
+
+                      </li>
+                    ))
+                  }
+
+                </ul>
+
+              </div>
+
+
+              <!-- CTA -->
+              <a
+                href="https://wa.me/593997564672"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center w-full mt-5 rounded-lg bg-neutral-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-600 transition-colors"
+              >
+                Consultar disponibilidad
+                <span class="ml-2">→</span>
+              </a>
+
             </div>
-          </div>
+
+          </article>
         ))
       }
+
     </div>
+
   </section>
+
+
+  <!-- CTA final -->
+  <section class="border-t border-neutral-200 bg-neutral-50">
+
+    <div class="max-w-6xl mx-auto px-4 py-12 text-center">
+
+      <h2 class="text-2xl font-semibold text-neutral-900">
+        ¿Necesitas otro tipo de vidrio?
+      </h2>
+
+      <p class="mt-2 text-neutral-600 max-w-xl mx-auto">
+        Contáctanos para consultar disponibilidad, medidas y precios.
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-3 mt-6">
+
+        <a
+          href="https://wa.me/593997564672"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"
+        >
+          Consultar por WhatsApp
+        </a>
+
+        <a
+          href="/contacto"
+          class="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-neutral-700 hover:bg-neutral-100 transition-colors"
+        >
+          Ir a contacto
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
 </Layout>
