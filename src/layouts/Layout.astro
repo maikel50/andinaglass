@@ -1,21 +1,32 @@
 ---
 import "../styles/global.css";
 import Header from "../components/Header.astro";
-import Hero from "../components/hero.astro";
 import Footer from "../components/Footer.astro";
 import WhatsAppFlotante from "../components/WhatsAppFlotante.astro";
+
+const {
+  title = "Andina Glass | Vidrios, aluminio y accesorios en Latacunga",
+  description = "Andina Glass distribuye vidrios, aluminio y accesorios en Latacunga, Ecuador. Consulta productos, medidas y disponibilidad para tus proyectos.",
+} = Astro.props;
 ---
 
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Andina Glass</title>
+
+    <title>{title}</title>
+
+    <meta name="description" content={description} />
   </head>
+
   <body class="min-h-screen flex flex-col">
     <Header />
 
-    <main class="flex-1"><slot /></main>
+    <main class="flex-1">
+      <slot />
+    </main>
+
     <WhatsAppFlotante />
     <Footer />
   </body>

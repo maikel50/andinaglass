@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-const baseURL = "http://localhost:4321";
+const baseURL = "https://www.andinaglass.com";
 
 const paginas = [
   "/",
