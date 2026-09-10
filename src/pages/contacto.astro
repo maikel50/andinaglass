@@ -88,6 +88,10 @@ import Layout from "../layouts/Layout.astro";
             name="nombre"
             autocomplete="name"
             required
+            minlength="2"
+            maxlength="60"
+            pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü ]+"
+            title="Introduce un nombre válido usando solo letras y espacios."
             placeholder="Tu nombre"
             class="w-full border border-neutral-300 rounded-lg px-4 py-3 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           />
@@ -108,7 +112,12 @@ import Layout from "../layouts/Layout.astro";
             name="telefono"
             autocomplete="tel"
             required
+            inputmode="numeric"
+            pattern="[0-9]{9,15}"
+            minlength="9"
+            maxlength="15"
             placeholder="Ej. 099 123 4567"
+            title="Introduce solo números, entre 9 y 15 dígitos."
             class="w-full border border-neutral-300 rounded-lg px-4 py-3 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           />
         </div>
@@ -171,6 +180,8 @@ import Layout from "../layouts/Layout.astro";
             name="mensaje"
             rows="5"
             required
+            minlength="10"
+            maxlength="1000"
             placeholder="Cuéntanos qué producto, medida o cantidad necesitas..."
             class="w-full border border-neutral-300 rounded-lg px-4 py-3 text-neutral-900 placeholder:text-neutral-400 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           ></textarea>
