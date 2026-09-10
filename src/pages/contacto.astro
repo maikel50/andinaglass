@@ -3,85 +3,147 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <section class="bg-neutral-50 py-10 text-center">
-    <h1 class="text-3xl font-bold text-neutral-900">Contactos</h1>
-    <p class="text-neutral-600 mt-2 max-w-xl mx-auto">
-      Escribenos para cotizar tu proyecto o resolver cualquier duda que tengas.
-      Nuestro equipo estará encantado de ayudarte.
-    </p>
+  <!-- Encabezado -->
+  <section class="bg-neutral-50 border-b border-neutral-200">
+    <div class="max-w-5xl mx-auto px-4 py-10 sm:py-12">
+      <!-- Breadcrumb -->
+      <div class="text-sm text-neutral-500 mb-6">
+        <a href="/" class="hover:text-blue-600 transition-colors"> Inicio </a>
+
+        <span class="mx-2 text-neutral-400">/</span>
+
+        <span class="text-neutral-700"> Contacto </span>
+      </div>
+
+      <div class="max-w-2xl">
+        <p
+          class="text-sm font-semibold uppercase tracking-wider text-blue-600 mb-2"
+        >
+          Estamos para ayudarte
+        </p>
+
+        <h1
+          class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900"
+        >
+          Contacto
+        </h1>
+
+        <p class="mt-3 text-base sm:text-lg leading-7 text-neutral-600">
+          Escríbenos para consultar disponibilidad, solicitar una cotización o
+          resolver cualquier duda sobre nuestros productos.
+        </p>
+      </div>
+    </div>
   </section>
+
+  <!-- Contacto -->
   <section
-    class="max-w-5xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 gap-10"
+    class="max-w-5xl mx-auto px-4 py-12 sm:py-14 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14"
   >
     <!-- Formulario -->
     <div>
-      <h2 class="text-xl font-semibold text-neutral-900 mb-4">
-        Envíanos un mensaje
-      </h2>
+      <div class="mb-6">
+        <h2 class="text-2xl font-semibold text-neutral-900">
+          Envíanos un mensaje
+        </h2>
 
-      <!--
-        Formulario con Netlify Forms:
-        - data-netlify="true" activa la detección automática al desplegar en Netlify
-        - El input oculto "form-name" es obligatorio para que Netlify lo reconozca
-        - El campo "bot-field" es un honeypot anti-spam (debe quedar vacío y oculto)
-      -->
+        <p class="text-sm text-neutral-500 mt-1">
+          Completa el formulario y nos pondremos en contacto contigo.
+        </p>
+      </div>
+
       <form
         name="contacto"
         method="POST"
         data-netlify="true"
         netlify-honeypot="bot-field"
-        class="space-y-4"
+        class="space-y-5"
       >
         <input type="hidden" name="form-name" value="contacto" />
+
+        <!-- Honeypot anti-spam -->
         <p class="hidden">
           <label>
-            No llenar: <input name="bot-field" />
+            No llenar:
+            <input name="bot-field" />
           </label>
         </p>
 
+        <!-- Nombre -->
         <div>
-          <label class="block text-sm font-medium text-neutral-700 mb-1"
-            >Nombre</label
+          <label
+            for="nombre"
+            class="block text-sm font-medium text-neutral-700 mb-1.5"
           >
+            Nombre *
+          </label>
+
           <input
+            id="nombre"
             type="text"
             name="nombre"
+            autocomplete="name"
             required
-            class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Tu nombre"
+            class="w-full border border-neutral-300 rounded-lg px-4 py-3 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           />
         </div>
 
+        <!-- Teléfono -->
         <div>
-          <label class="block text-sm font-medium text-neutral-700 mb-1"
-            >Teléfono</label
+          <label
+            for="telefono"
+            class="block text-sm font-medium text-neutral-700 mb-1.5"
           >
+            Teléfono *
+          </label>
+
           <input
+            id="telefono"
             type="tel"
             name="telefono"
+            autocomplete="tel"
             required
-            class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ej. 099 123 4567"
+            class="w-full border border-neutral-300 rounded-lg px-4 py-3 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           />
         </div>
 
+        <!-- Correo -->
         <div>
-          <label class="block text-sm font-medium text-neutral-700 mb-1"
-            >Correo</label
+          <label
+            for="correo"
+            class="block text-sm font-medium text-neutral-700 mb-1.5"
           >
+            Correo electrónico
+          </label>
+
           <input
+            id="correo"
             type="email"
             name="correo"
-            class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            autocomplete="email"
+            placeholder="correo@ejemplo.com"
+            class="w-full border border-neutral-300 rounded-lg px-4 py-3 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           />
         </div>
 
+        <!-- Producto -->
         <div>
-          <label class="block text-sm font-medium text-neutral-700 mb-1"
-            >¿Qué producto te interesa?</label
+          <label
+            for="producto"
+            class="block text-sm font-medium text-neutral-700 mb-1.5"
           >
+            ¿Qué producto te interesa?
+          </label>
+
           <select
+            id="producto"
             name="producto"
-            class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full border border-neutral-300 rounded-lg px-4 py-3 bg-white text-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           >
+            <option value="" selected disabled> Selecciona una opción </option>
+
             <option value="Vidrios">Vidrios</option>
             <option value="Aluminio">Aluminio</option>
             <option value="Accesorios">Accesorios</option>
@@ -89,66 +151,160 @@ import Layout from "../layouts/Layout.astro";
           </select>
         </div>
 
+        <!-- Mensaje -->
         <div>
-          <label class="block text-sm font-medium text-neutral-700 mb-1"
-            >Mensaje</label
+          <label
+            for="mensaje"
+            class="block text-sm font-medium text-neutral-700 mb-1.5"
           >
+            Mensaje *
+          </label>
+
           <textarea
+            id="mensaje"
             name="mensaje"
-            rows="4"
+            rows="5"
             required
-            class="w-full border border-neutral-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Cuéntanos qué producto, medida o cantidad necesitas..."
+            class="w-full border border-neutral-300 rounded-lg px-4 py-3 text-neutral-900 placeholder:text-neutral-400 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           ></textarea>
         </div>
 
+        <!-- Privacidad -->
+        <div class="flex items-start gap-3">
+          <input
+            id="privacidad"
+            type="checkbox"
+            name="privacidad"
+            required
+            class="mt-1 h-4 w-4 rounded border-neutral-300 text-blue-600 focus:ring-blue-500"
+          />
+
+          <label for="privacidad" class="text-xs leading-5 text-neutral-500">
+            He leído y acepto la <a
+              href="/politica"
+              class="text-blue-600 hover:underline">Política de privacidad</a
+            >.
+          </label>
+        </div>
+
+        <!-- Enviar -->
         <button
           type="submit"
-          class="w-full bg-blue-600 hover:bg-blue-700 transition-colors text-white font-semibold py-3 rounded-lg"
+          class="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition-colors text-white font-semibold py-3 rounded-lg"
         >
           Enviar mensaje
         </button>
       </form>
     </div>
 
-    <!-- Info + mapa -->
-    <div class="space-y-6">
-      <div>
-        <h2 class="text-xl font-semibold text-neutral-900 mb-3">
-          Otras formas de contacto
+    <!-- Información -->
+    <div>
+      <div class="mb-6">
+        <h2 class="text-2xl font-semibold text-neutral-900">
+          Visítanos o contáctanos
         </h2>
-        <ul class="space-y-2 text-neutral-700">
-          <li>
-            📞 <a href="tel:+593000000000" class="hover:underline"
-              >+593 00 000 0000</a>
-          </li>
-          <li>
-            ✉️ <a href="mailto:correo@andinaglass.com" class="hover:underline"
-              >correo@andinaglass.com</a>
-          </li>
-          <li>📍 Latacunga, Ecuador</li>
-          <li>
-            💬
-            <a
-              href="https://wa.me/593000000000"
-              target="_blank"
-              class="hover:underline text-green-600 font-medium"
-            >
-              Escríbenos por WhatsApp
-            </a>
-          </li>
-        </ul>
+
+        <p class="text-sm text-neutral-500 mt-1">
+          También puedes comunicarte directamente con nosotros.
+        </p>
       </div>
 
+      <!-- Datos de contacto -->
+      <div class="space-y-4">
+        <!-- WhatsApp -->
+        <a
+          href="https://wa.me/593997564672"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-start gap-4 rounded-xl border border-neutral-200 bg-white p-4 hover:border-green-300 hover:shadow-sm transition-all"
+        >
+          <div
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-50 text-xl"
+          >
+            💬
+          </div>
+
+          <div>
+            <p
+              class="font-semibold text-neutral-900 group-hover:text-green-600 transition-colors"
+            >
+              WhatsApp
+            </p>
+
+            <p class="text-sm text-neutral-500 mt-0.5">+593 99 756 4672</p>
+
+            <p class="text-xs font-medium text-green-600 mt-1">Escríbenos →</p>
+          </div>
+        </a>
+
+        <!-- Correo -->
+        <a
+          href="mailto:andinaglassdistribuidora@gmail.com"
+          class="group flex items-start gap-4 rounded-xl border border-neutral-200 bg-white p-4 hover:border-blue-300 hover:shadow-sm transition-all"
+        >
+          <div
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-xl"
+          >
+            ✉️
+          </div>
+
+          <div class="min-w-0">
+            <p
+              class="font-semibold text-neutral-900 group-hover:text-blue-600 transition-colors"
+            >
+              Correo electrónico
+            </p>
+
+            <p class="text-sm text-neutral-500 mt-0.5 break-all">
+              andinaglassdistribuidora@gmail.com
+            </p>
+          </div>
+        </a>
+
+        <!-- Dirección -->
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Melchor+de+Benavides+y+Benjamín+Terán,+Latacunga,+Ecuador"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-start gap-4 rounded-xl border border-neutral-200 bg-white p-4 hover:border-blue-300 hover:shadow-sm transition-all"
+        >
+          <div
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-xl"
+          >
+            📍
+          </div>
+
+          <div>
+            <p
+              class="font-semibold text-neutral-900 group-hover:text-blue-600 transition-colors"
+            >
+              Dirección
+            </p>
+
+            <p class="text-sm text-neutral-500 mt-0.5">
+              Melchor de Benavides y Benjamín Terán
+            </p>
+
+            <p class="text-sm text-neutral-500">Latacunga, Ecuador</p>
+
+            <p class="text-xs font-medium text-blue-600 mt-1">Cómo llegar →</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Mapa -->
       <div
-        class="rounded-xl overflow-hidden border border-neutral-200 shadow-sm"
+        class="mt-6 rounded-xl overflow-hidden border border-neutral-200 shadow-sm"
       >
         <iframe
-          src="https://www.google.com/maps?q=Latacunga,Ecuador&output=embed"
+          src="https://www.google.com/maps?q=Melchor+de+Benavides+y+Benjamín+Terán,+Latacunga,+Ecuador&output=embed"
           width="100%"
-          height="300"
+          height="320"
           style="border:0;"
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación de Andina Glass en Latacunga"></iframe>
       </div>
     </div>
   </section>
