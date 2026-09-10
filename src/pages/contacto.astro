@@ -56,9 +56,9 @@ import Layout from "../layouts/Layout.astro";
       </div>
 
       <form
+        id="contacto-form"
         name="contacto"
         method="POST"
-        action="/pagina_gracias"
         data-netlify="true"
         netlify-honeypot="bot-field"
         class="space-y-5"
@@ -199,6 +199,12 @@ import Layout from "../layouts/Layout.astro";
         >
           Enviar mensaje
         </button>
+        <p
+          id="mensaje-estado"
+          class="hidden text-sm text-center font-medium"
+          aria-live="polite"
+        >
+        </p>
       </form>
     </div>
 
@@ -313,3 +319,62 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </section>
 </Layout>
+<script>
+  const form = document.querySelector<HTMLFormElement>("#contacto-form");
+  const estado =
+    document.querySelector<HTMLParagraphElement>("#mensaje-estado");
+  const boton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    if (!estado || !boton) return;
+
+    boton.disabled = true;
+    boton.textContent = "Enviando...";
+    estado.classList.add("hidden");
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams(
+          Array.from(formData.entries()).map(([key, value]) => [
+            key,
+            String(value),
+          ]),
+        ).toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al enviar el formulario");
+      }
+
+      form.reset();
+
+      estado.textContent =
+        "✓ Mensaje enviado correctamente. Nos pondremos en contacto contigo lo antes posible.";
+
+      estado.className = "text-sm text-center font-medium text-green-600";
+    } catch (error) {
+      console.error(error);
+
+      estado.textContent =
+        "No se pudo enviar el mensaje. Inténtalo de nuevo o contáctanos por WhatsApp.";
+
+      estado.className = "text-sm text-center font-medium text-red-600";
+    } finally {
+      boton.disabled = false;
+      boton.textContent = "Enviar mensaje";
+    }
+  });
+</script>
